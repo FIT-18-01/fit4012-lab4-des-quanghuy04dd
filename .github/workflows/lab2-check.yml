@@ -1,0 +1,19 @@
+name: FIT4012 Lab 2 Classical Ciphers Auto Check
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  validate-lab2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Lab 2 classical ciphers checker
+        run: python3 .github/scripts/check_lab2.py
