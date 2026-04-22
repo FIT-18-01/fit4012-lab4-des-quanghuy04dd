@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-EXPECTED="Ciphertext: 0111111010111111010001001001001100100011111110101111101011111000"
+# Expected ciphertext from default sample test
+# (using plaintext = key = 0000000100100011010001010110011110001001101010111100110111101111)
+EXPECTED="Ciphertext: 0101011011001100000010011110011111001111110111000100110011101111"
 
 g++ -std=c++17 -Wall -Wextra -pedantic des.cpp -o des_test
 OUTPUT=$(./des_test)
