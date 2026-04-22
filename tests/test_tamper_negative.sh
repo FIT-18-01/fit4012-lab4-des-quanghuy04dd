@@ -19,7 +19,11 @@ CIPHERTEXT=$(echo "1 $PLAINTEXT $KEY" | ./des_test | sed 's/Ciphertext: //')
 echo "Original ciphertext: $CIPHERTEXT"
 
 # Tamper: flip the first bit
-TAMPERED_CIPHERTEXT="$(echo "$CIPHERTEXT" | sed 's/^0/1/' | sed 's/^1/0/')"
+if [[ "${CIPHERTEXT:0:1}" == "0" ]]; then
+    TAMPERED_CIPHERTEXT="1${CIPHERTEXT:1}"
+else
+    TAMPERED_CIPHERTEXT="0${CIPHERTEXT:1}"
+fi
 
 echo "Tampered ciphertext: $TAMPERED_CIPHERTEXT"
 
