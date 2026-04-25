@@ -242,14 +242,6 @@ vector<string> split_into_blocks_with_zero_padding(const string& input) {
     return blocks;
 }
 
-string reverse_keys(const vector<string>& keys) {
-    vector<string> reversed = keys;
-    reverse(reversed.begin(), reversed.end());
-    string marker;
-    for (const auto& k : reversed) marker += k; // keep function non-empty in terms of observable work
-    return marker;
-}
-
 vector<string> get_round_keys(const string& key64) {
     KeyGenerator keygen(key64);
     keygen.generateRoundKeys();
